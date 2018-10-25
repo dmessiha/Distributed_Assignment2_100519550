@@ -1,3 +1,8 @@
+/*
+ * @author Daniel Messiha
+ * ID: 105519550
+ * October 25 - 2018
+ */
 import java.util.Arrays;
 import java.util.Map;
 import java.util.function.Function;

@@ -1,7 +1,13 @@
+/*
+ * @author Daniel Messiha
+ * ID: 105519550
+ * October 25 - 2018
+ */
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -41,9 +47,9 @@ public class Display extends JFrame {
         storeEncryptedFileButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String localFilePath = JOptionPane.showInputDialog(panel1, "Enter file location");
-                String remoteFilePath = JOptionPane.showInputDialog(panel1, "Enter the remote file name");
-                String key = JOptionPane.showInputDialog(panel1, "Enter the key");
+                String localFilePath = JOptionPane.showInputDialog(panel1, "Please enter the local file to Encrypt");
+                String remoteFilePath = JOptionPane.showInputDialog(panel1, "Please provide a name for the encrypted file ");
+                String key = JOptionPane.showInputDialog(panel1, "Please provide a key for encryption");
 
                 try {
                     String fileContent = new String(Files.readAllBytes(Paths.get(localFilePath)));
@@ -59,13 +65,19 @@ public class Display extends JFrame {
         loadEncryptedFileButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String remoteFilePath = JOptionPane.showInputDialog(panel1, "Enter the remote file name");
-                String localFilePath = JOptionPane.showInputDialog(panel1, "Enter file location");
-                String key = JOptionPane.showInputDialog(panel1, "Enter the key");
+                String remoteFilePath = JOptionPane.showInputDialog(panel1, "Enter the name of the local file to Decrypt");
+                String localFilePath = JOptionPane.showInputDialog(panel1, "Please provide a name for the decrypted file");
+                String key = JOptionPane.showInputDialog(panel1, "Please enter the key for Decryption");
 
                 try {
                     String fileContent = service.readEncryptedFile(remoteFilePath, key);
-                    FileOutputStream fos = new FileOutputStream(localFilePath);
+                    final File file = new File(localFilePath);
+
+                    if (!file.getAbsoluteFile().getParentFile().exists()) {
+                        file.getAbsoluteFile().getParentFile().mkdirs();
+                    }
+
+                    FileOutputStream fos = new FileOutputStream(file);
 
                     fos.write(fileContent.getBytes());
                     fos.close();
@@ -94,11 +106,11 @@ public class Display extends JFrame {
                 outputTxt.setText(service.sha1Hash(input));
                 break;
             case "Encrypt":
-                String encKey = JOptionPane.showInputDialog(panel1, "Enter encryption key");
+                String encKey = JOptionPane.showInputDialog(panel1, "Please enter encryption key");
                 outputTxt.setText(service.encrypt(input, encKey));
                 break;
             case "Decrypt":
-                String decKey = JOptionPane.showInputDialog(panel1, "Enter decryption key");
+                String decKey = JOptionPane.showInputDialog(panel1, "Please enter decryption key");
                 outputTxt.setText(service.decrypt(input, decKey));
                 break;
         }

@@ -1,3 +1,9 @@
+/*
+ * @author Daniel Messiha
+ * ID: 105519550
+ * October 25 - 2018
+ */
+
 import java.io.IOException;
 import java.rmi.Remote;
 import java.rmi.RemoteException;

@@ -1,6 +1,13 @@
+/*
+ * @author Daniel Messiha
+ * ID: 105519550
+ * October 25 - 2018
+ */
+
 import javax.swing.*;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+
 
 public class Client {
 

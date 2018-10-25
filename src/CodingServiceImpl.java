@@ -1,8 +1,12 @@
+/*
+ * @author Daniel Messiha
+ * ID: 105519550
+ * October 25 - 2018
+ */
+
 import javax.crypto.Cipher;
-import javax.crypto.SecretKey;
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -11,8 +15,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
-import java.security.spec.KeySpec;
+
 import java.util.Base64;
 
 public class CodingServiceImpl extends UnicastRemoteObject implements CodingService {
@@ -57,32 +60,6 @@ public class CodingServiceImpl extends UnicastRemoteObject implements CodingServ
         return "Error encrypting message!";
     }
 
-    private SecretKey asKey(String password) {
-        try {
-            SecureRandom secureRandom = SecureRandom.getInstance("SHA1PRNG");
-            byte saltBytes[] = new byte[20];
-            secureRandom.nextBytes(saltBytes);
-
-            KeySpec spec = new PBEKeySpec(password.toCharArray(), saltBytes, 65536, 128);
-            SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
-            SecretKey secretKey = factory.generateSecret(spec);
-
-            return new SecretKeySpec(secretKey.getEncoded(), "AES");
-        } catch (Exception e) {
-            throw new IllegalStateException("Key cant be generated!");
-        }
-    }
-    /*
-    byte[] mUniqueKey = new byte[16];
-    byte[] mUniqueIV = new byte[16];
-    // password
-    // pass
-
-    final Cipher aesCipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-    aesCipher.init(Cipher.DECRYPT_MODE, new SecretKeySpec(mUniqueKey, "AES"), new IvParameterSpec(mUniqueIV));
-
-    return aesCipher.doFinal(data);
-    */
     @Override
     public String decrypt(String txt, String key) {
         try {
@@ -98,7 +75,13 @@ public class CodingServiceImpl extends UnicastRemoteObject implements CodingServ
 
     @Override
     public void storeEncryptedFile(String fileName, String fileContent, String key) throws IOException {
-        final FileOutputStream fos = new FileOutputStream(fileName);
+        final File file = new File(fileName);
+
+        if (!file.getAbsoluteFile().getParentFile().exists()) {
+            file.getAbsoluteFile().getParentFile().mkdirs();
+        }
+
+        final FileOutputStream fos = new FileOutputStream(file);
 
         fos.write(encrypt(fileContent, key).getBytes());
         fos.close();
