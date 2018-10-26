@@ -1,5 +1,4 @@
-# Distributed_Assignment2_100519550
-RMI application
+# RMI application 
 
 For this Assignment, We had to implement a RMI server/client application with 5 unique services available for the client. 
 
