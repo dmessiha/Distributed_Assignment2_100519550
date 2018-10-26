@@ -30,7 +30,7 @@ Give the example
 Built With
 Java with IntelliJ IDE
 
-Authors
+Author
 Daniel Messiha
 ID: 100519550
 
