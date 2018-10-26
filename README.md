@@ -3,7 +3,7 @@
 For this Assignment, We had to implement a RMI server/client application with 5 unique services available for the client. 
 
 Getting Started
-You can simple run the server then the client and the GUI will appear to provide with the services.
+You can simple run the server then the client both found in the src folder and the GUI will appear to provide with the services.
 
 Services include:
  - No key Base64 Encryption
