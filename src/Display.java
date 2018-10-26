@@ -2,6 +2,7 @@
  * @author Daniel Messiha
  * ID: 105519550
  * October 25 - 2018
+ * GUI generated with IntelliJ UI builder
  */
 
 import javax.swing.*;
@@ -12,6 +13,7 @@ import java.io.FileOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.rmi.RemoteException;
+
 
 public class Display extends JFrame {
 

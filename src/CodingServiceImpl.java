@@ -17,7 +17,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 
-public class CodingServiceImpl extends UnicastRemoteObject implements CodingService {                       // Service Implementation
+// Service Implementation
+public class CodingServiceImpl extends UnicastRemoteObject implements CodingService {
 
     public static final String SERVICE_NAME = CodingServiceImpl.class.getSimpleName();
 
@@ -33,17 +34,20 @@ public class CodingServiceImpl extends UnicastRemoteObject implements CodingServ
 
     @Override
     public String base64Decode(String encodedText) throws RemoteException {
-        return new String(Base64.getDecoder().decode(encodedText.getBytes()));                               // Simple Base64 Decryption without key
+        // Simple Base64 Decryption without key
+        return new String(Base64.getDecoder().decode(encodedText.getBytes()));
     }
 
     @Override
     public String md5Encode(String plainText) throws RemoteException, NoSuchAlgorithmException {
-        return new String(MessageDigest.getInstance("MD5").digest(plainText.getBytes()));                     // MD5 Hashing
+        // MD5 Hashing
+        return new String(MessageDigest.getInstance("MD5").digest(plainText.getBytes()));
     }
 
     @Override
     public String sha1Hash(String plainText) throws RemoteException, NoSuchAlgorithmException {
-        return base64Encode(new String(MessageDigest.getInstance("SHA-1").digest(plainText.getBytes())));      // Sha-1 Hashing
+        // Sha-1 Hashing
+        return base64Encode(new String(MessageDigest.getInstance("SHA-1").digest(plainText.getBytes())));
     }
 
     @Override
