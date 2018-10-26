@@ -1,0 +1,12 @@
+iot protocol? restful api
+coap stands for
+coap protocol? m2m protocol
+
+t/f webpage requests
+1 request 3 response F its 4 responses
+know persistant vs non-persistant
+2 distinct webpages (objects) can be sent over same persistant connection (T)
+non persistant browser and origin server it is possible for a single tc to send 2 distinct request (F)
+date header in http shows when last message was edited (false)
+http response messages never have a empty box (F)
+

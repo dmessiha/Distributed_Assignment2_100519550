@@ -10,6 +10,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 
 public class Server {
+    // RMI server
 
     public static void main(String[] args) throws RemoteException, AlreadyBoundException, MalformedURLException {
         LocateRegistry.createRegistry(1099);
