@@ -5,7 +5,7 @@ For this Assignment, We had to implement a RMI server/client application with 5 
 Getting Started
 You can simple run the server then the client and the GUI will appear to provide with the services.
 
-Services in include:
+Services include:
  - No key Base64 Encryption
  - No Key Base64 Decryption
  - MD5 Hashing
