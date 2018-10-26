@@ -22,9 +22,9 @@ Give the example
 4. Encrypt any string using base64 but this service requires an encryption key
 5. Decrypt the string using the same key
 6. Encrypt a file using base64 encryption with a key
- *created test.txt then chose encrypted.txt as the encrypted file name with "sandra" as a key*
+ (created test.txt then chose Encrypted.txt as the encrypted file name to be created with "daniel" as a key)
 7. Decrypt the same file using the same key
- *Decrypted the encrypted.txt file and chose decrypted.txt as the decrypted file name*
+ (Decrypted the encrypted.txt file and chose Decrypted.txt as the decrypted file with daniel as the key)
 
 
 Built With
